@@ -17,7 +17,7 @@ import com.credera.bootcamp.module5.model.Practice;
 import com.credera.bootcamp.module5.repository.EmployeeRepository;
 
 @Service
-public class RepoBasedEmployeeService implements EmployeeService<Employee> {
+public class EmployeeServiceImpl implements EmployeeService {
 
     @Autowired
     protected EmployeeRepository employeeRepository;

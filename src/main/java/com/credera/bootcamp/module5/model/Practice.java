@@ -4,8 +4,6 @@ import java.util.List;
 
 import javax.persistence.*;
 
-// Alternative to orm.xml file
-@NamedQueries({ @NamedQuery(name = "FIND_BY_LONG_NAME_LIKE", query = "SELECT p FROM Practice p WHERE p.longName LIKE ?1") })
 @Entity
 @Table(name = "practice")
 public class Practice extends Auditable {

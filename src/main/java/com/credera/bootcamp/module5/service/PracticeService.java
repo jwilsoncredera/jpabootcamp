@@ -4,13 +4,15 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import com.credera.bootcamp.module5.model.Practice;
+
 @Service
-public interface PracticeService<T> {
+public interface PracticeService {
 
-    T findByShortName(String shortName);
+    Practice findByShortName(String shortName);
 
-    List<T> findByLongNameLike(String longName);
+    List<Practice> findByLongNameLike(String longName);
 
-    List<T> findAll();
+    List<Practice> findAll();
 
 }

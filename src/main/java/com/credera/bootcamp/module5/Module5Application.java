@@ -7,8 +7,8 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import com.credera.bootcamp.module5.service.DaoBasedPracticeService;
-import com.credera.bootcamp.module5.service.RepoBasedEmployeeService;
+import com.credera.bootcamp.module5.service.EmployeeService;
+import com.credera.bootcamp.module5.service.PracticeService;
 
 @SpringBootApplication
 public class Module5Application implements CommandLineRunner {
@@ -16,10 +16,10 @@ public class Module5Application implements CommandLineRunner {
     Logger logger = LoggerFactory.getLogger(Module5Application.class);
 
     @Autowired
-    private RepoBasedEmployeeService repoBasedEmployeeService;
+    private EmployeeService employeeService;
 
     @Autowired
-    private DaoBasedPracticeService daoBasedPracticeService;
+    private PracticeService practiceService;
 
     public static void main(String[] args) {
         SpringApplication.run(Module5Application.class, args);
@@ -29,10 +29,10 @@ public class Module5Application implements CommandLineRunner {
     public void run(String... args) throws Exception {
         // Debugging methods when running application outside of tests
         logger.debug("************ Start debugging queries ************");
-        repoBasedEmployeeService.findAll()
+        employeeService.findAll()
                 .forEach(employee -> logger.debug(employee.getFirstName() + " " + employee.getLastName()));
-        daoBasedPracticeService.findAll()
-                .forEach(practiceDto -> logger.debug(practiceDto.getShortName() + ": " + practiceDto.getLongName()));
+        practiceService.findAll()
+                .forEach(practice -> logger.debug(practice.getShortName() + ": " + practice.getLongName()));
         logger.debug("************ End debugging queries ************");
     }
 

@@ -10,38 +10,36 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.credera.bootcamp.module5.dto.PracticeDto;
-import com.credera.bootcamp.module5.service.DaoBasedPracticeService;
+import com.credera.bootcamp.module5.model.Practice;
+import com.credera.bootcamp.module5.service.PracticeServiceImpl;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @ActiveProfiles("test")
-public class TestDaoBasedPracticeService implements CommonPracticeTests {
+public class TestPracticeServiceImpl {
 
     @Autowired
-    protected DaoBasedPracticeService service;
+    protected PracticeServiceImpl service;
 
-    @Override
     @Test
     public void testFindByShortName() {
         // search for seed data
         final String shortName = "OTS";
 
         // tested method
-        PracticeDto practice = service.findByShortName(shortName);
+        Practice practice = service.findByShortName(shortName);
 
         // verification
         Assert.assertEquals(shortName, practice.getShortName());
     }
 
-    @Override
     @Test
     public void testFindByLongNameLike() {
         // search for seed data
         final String longNameFragment = "Open";
 
         // tested method
-        List<PracticeDto> practices = service.findByLongNameLike(longNameFragment);
+        List<Practice> practices = service.findByLongNameLike(longNameFragment);
 
         // verification
         Assert.assertEquals(1, practices.size());
@@ -49,11 +47,10 @@ public class TestDaoBasedPracticeService implements CommonPracticeTests {
         Assert.assertTrue(practices.get(0).getLongName().contains(longNameFragment));
     }
 
-    @Override
     @Test
     public void testFindAll() {
         // tested method
-        List<PracticeDto> employees = service.findAll();
+        List<Practice> employees = service.findAll();
 
         // verification
         Assert.assertTrue(employees.size() > 2);

@@ -9,7 +9,7 @@ import com.credera.bootcamp.module5.model.Practice;
 import com.credera.bootcamp.module5.repository.PracticeRepository;
 
 @Service
-public class RepoBasedPracticeService implements PracticeService<Practice> {
+public class PracticeServiceImpl implements PracticeService {
 
     @Autowired
     protected PracticeRepository practiceRepository;

@@ -12,8 +12,7 @@ import org.springframework.stereotype.Repository;
 import com.credera.bootcamp.module5.model.Employee;
 
 /**
- * Using Spring Data allows us to avoid manually creating queries<br>
- * like those in {@link com.credera.bootcamp.module5.dao.EmployeeDao}
+ * Using Spring Data allows us to avoid manually creating queries
  */
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {

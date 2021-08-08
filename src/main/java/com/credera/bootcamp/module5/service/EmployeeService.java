@@ -9,25 +9,27 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import com.credera.bootcamp.module5.model.Employee;
+
 @Service
-public interface EmployeeService<T> {
+public interface EmployeeService {
 
-    T create(T employee);
+    Employee create(Employee employee);
 
-    T retrieveOneByName(String firstName, String lastName) throws EntityNotFoundException;
+    Employee retrieveOneByName(String firstName, String lastName) throws EntityNotFoundException;
 
-    T updateEmployee(T employee);
+    Employee updateEmployee(Employee employee);
 
     void deleteEmployee(long employeeId);
 
-    List<T> findByLastName(String lastName);
+    List<Employee> findByLastName(String lastName);
 
-    List<T> findByLastName(String lastName, Sort sort);
+    List<Employee> findByLastName(String lastName, Sort sort);
 
-    Page<T> findByLastName(String lastName, Pageable pageable);
+    Page<Employee> findByLastName(String lastName, Pageable pageable);
 
-    List<T> findAll();
+    List<Employee> findAll();
 
-    T findById(long employeeId);
+    Employee findById(long employeeId);
 
 }
