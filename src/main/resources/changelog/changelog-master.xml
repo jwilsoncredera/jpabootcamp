@@ -1,0 +1,74 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <!-- https://www.baeldung.com/liquibase-refactor-schema-of-java-app -->
+
+    <changeSet dbms="h2" author="liquibase-docs" id="createSequence-example">
+        <createSequence sequenceName="hibernate_sequence"
+                        startValue="100"/>
+    </changeSet>
+
+    <changeSet author="jwilson" id="create-practice-table">
+        <createTable tableName="practice">
+            <column name="id" type="java.sql.Types.BIGINT">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="PK_PRACTICE"/>
+            </column>
+            <column name="short_name" type="java.sql.Types.VARCHAR(3)">
+                <constraints nullable="false"
+                             unique="true"/>
+            </column>
+            <column name="long_name" type="java.sql.Types.VARCHAR(255)"/>
+            <column name="created_date" type="java.sql.Types.Timestamp"/>
+            <column name="updated_date" type="java.sql.Types.Timestamp"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="jwilson" id="create-employee-table">
+        <createTable tableName="employee">
+            <column name="id" type="java.sql.Types.BIGINT">
+                <constraints nullable="false"
+                             primaryKey="true"
+                             primaryKeyName="PK_EMPLOYEE"/>
+            </column>
+            <column name="first_name" type="java.sql.Types.VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="last_name" type="java.sql.Types.VARCHAR(255)"/>
+            <column name="practice_id" type="java.sql.Types.BIGINT"/>
+            <column name="created_date" type="java.sql.Types.Timestamp"/>
+            <column name="updated_date" type="java.sql.Types.Timestamp"/>
+        </createTable>
+
+        <addForeignKeyConstraint constraintName="FK_EMPLOYEE_PRACTICE"
+                                 baseTableName="employee" baseColumnNames="practice_id"
+                                 referencedTableName="practice" referencedColumnNames="id"
+                                 onDelete="CASCADE" onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet author="jwilson" id="create-practice-seed-data" runOnChange="true">
+        <loadUpdateData
+                encoding="UTF-8"
+                file="seeddata/Practice.csv"
+                primaryKey="id"
+                quotchar="'"
+                separator=","
+                tableName="Practice">
+        </loadUpdateData>
+    </changeSet>
+
+    <changeSet author="jwilson" id="create-employee-seed-data" runOnChange="true">
+        <loadUpdateData
+                encoding="UTF-8"
+                file="seeddata/Employee.csv"
+                primaryKey="id"
+                quotchar="&quot;"
+                separator=","
+                tableName="Employee">
+        </loadUpdateData>
+    </changeSet>
+
+</databaseChangeLog>
