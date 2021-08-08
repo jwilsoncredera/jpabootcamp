@@ -23,12 +23,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     protected EmployeeRepository employeeRepository;
 
     @Override
-    public Employee create(final Employee employee) {
-        // Same as update, except the source data is not a Managed Entity
-        return employeeRepository.save(employee);
-    }
-
-    @Override
     public Employee retrieveOneByName(final String firstName, String lastName) throws EntityNotFoundException {
         Employee retVal = employeeRepository.findOneByFirstNameAndLastNameOrderByIdDesc(firstName, lastName);
         if (retVal == null) {
@@ -36,17 +30,6 @@ public class EmployeeServiceImpl implements EmployeeService {
             throw new EntityNotFoundException(message);
         }
         return retVal;
-    }
-
-    @Override
-    public Employee updateEmployee(final Employee employee) {
-        // Same as create, except the source data is a Managed Entity
-        return employeeRepository.save(employee);
-    }
-
-    @Override
-    public void deleteEmployee(final long employeeId) {
-        employeeRepository.deleteById(employeeId);
     }
 
     @Override
@@ -79,24 +62,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         return optionalEmployee.get();
     }
 
-    @Transactional
     public void updatePracticeThroughEmployee(final Long employeeId, final String newPracticeLongName) {
-        Employee employee = findById(employeeId);
-        Practice practice = employee.getPractice(); // no need for practiceRepository
-
-        practice.setLongName(newPracticeLongName);
-        // exiting the transaction will automatically save the change to Practice
-    }
-
-    /**
-     * This will fail unless the caller uses a transaction
-     */
-    public void updatePracticeThroughEmployeeNoTransaction(final Long employeeId, final String newPracticeLongName) {
-        Employee employee = findById(employeeId);
-        Practice practice = employee.getPractice(); // no need for practiceRepository
-
-        practice.setLongName(newPracticeLongName);
-        // exiting the transaction will automatically save the change to Practice
+        // TODO: Change the practice long name without calling any save methods
     }
 
     @Transactional

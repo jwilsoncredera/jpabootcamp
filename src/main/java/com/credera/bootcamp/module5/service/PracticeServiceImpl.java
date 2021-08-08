@@ -15,11 +15,6 @@ public class PracticeServiceImpl implements PracticeService {
     protected PracticeRepository practiceRepository;
 
     @Override
-    public Practice findByShortName(final String shortName) {
-        return practiceRepository.findByShortName(shortName);
-    }
-
-    @Override
     public List<Practice> findByLongNameLike(final String longName) {
         return practiceRepository.findByLongNameLike("%" + longName + "%");
     }

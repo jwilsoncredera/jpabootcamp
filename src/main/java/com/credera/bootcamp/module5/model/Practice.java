@@ -21,7 +21,6 @@ public class Practice extends Auditable {
     /**
      * Lazily loaded upon request within a transaction
      */
-    @OneToMany(mappedBy = "practice", targetEntity = Employee.class, cascade = CascadeType.ALL, orphanRemoval = true)
     public List<Employee> employees;
 
     public Long getId() {

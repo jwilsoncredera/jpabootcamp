@@ -1,8 +1,0 @@
-id,short_name,long_name,created_date,updated_date
-1,ABI,'Analytics and Business Intelligence',2000-01-01 00:00:00,2000-01-01 00:00:00
-2,CRP,'Corporate',2000-01-01 00:00:00,2000-01-01 00:00:00
-3,MC,Management Consulting,2000-01-01 00:00:00,2000-01-01 00:00:00
-4,MS,Microsoft Solutions,2000-01-01 00:00:00,2000-01-01 00:00:00
-5,OTS,Open Technology Solutions,2000-01-01 00:00:00,2000-01-01 00:00:00
-6,PRT,Partner,2000-01-01 00:00:00,2000-01-01 00:00:00
-7,UX,User Experience,2000-01-01 00:00:00,2000-01-01 00:00:00

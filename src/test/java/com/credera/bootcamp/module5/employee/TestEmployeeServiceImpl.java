@@ -166,26 +166,6 @@ public class TestEmployeeServiceImpl {
         service.updatePracticeThroughEmployee(employeeId, oldPracticeLongName);
     }
 
-    @Test
-    public void testUpdatePracticeThroughEmployeeNoTransaction() {
-        // search for seed data
-        final String searchedFirstName = "Justin";
-        final String searchedLastName = "Wilson";
-        final String newPracticeLongName = "Test";
-
-        // remember old practice name
-        Employee employee = service.retrieveOneByName(searchedFirstName, searchedLastName);
-        final Long employeeId = employee.getId();
-        final String oldPracticeLongName = employee.getPractice().getLongName();
-
-        // tested method - update database
-        service.updatePracticeThroughEmployeeNoTransaction(employeeId, newPracticeLongName);
-
-        // verify update did not persist
-        employee = service.retrieveOneByName(searchedFirstName, searchedLastName);
-        Assert.assertEquals(oldPracticeLongName, employee.getPractice().getLongName());
-    }
-
     @Test(expected = LazyInitializationException.class)
     public void testFetchPracticeEmployeesWithoutTransaction() {
         // search for seed data

@@ -22,13 +22,6 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
      */
     Employee findOneByFirstNameAndLastNameOrderByIdDesc(String firstName, String lastName);
 
-    /**
-     * Return all matches
-     * </p>
-     * We don't have to use @Query here, it's just present as an example.
-     * If it were gone, Spring Data would automatically create the query by reflexively inspecting the method name.
-     */
-    @Query("SELECT employee FROM Employee employee WHERE employee.lastName = :lastName")
     List<Employee> findByLastName(String lastName);
 
     /**

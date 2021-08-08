@@ -49,17 +49,6 @@
                                  onDelete="CASCADE" onUpdate="CASCADE"/>
     </changeSet>
 
-    <changeSet author="jwilson" id="create-practice-seed-data" runOnChange="true">
-        <loadUpdateData
-                encoding="UTF-8"
-                file="seeddata/Practice.csv"
-                primaryKey="id"
-                quotchar="'"
-                separator=","
-                tableName="Practice">
-        </loadUpdateData>
-    </changeSet>
-
     <changeSet author="jwilson" id="create-employee-seed-data" runOnChange="true">
         <loadUpdateData
                 encoding="UTF-8"
